@@ -6,9 +6,8 @@ import MMSimulator.MMCharacter;
 import Parsers.NodeParser;
 import Program.EventController;
 import decisionTree.Tree;
-import java.awt.Frame;
-import  java.awt.event.ActionEvent;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import  java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -51,9 +50,13 @@ public class RunProjectHandler extends GooeyListener{
         buttHandler.setGFrame(frame);	
 
         try {
-            frame.getImage().setImage(EventController.getProjectDir() + "\\" + "images\\" + "default.png");
+            frame.getImage().setImage(EventController.getProjectDir() + "\\" + "images\\" + dTree.getCurrentNode().getImageFilename());
         }
         catch(IOException e) {
+            //if default image is not set, fail quietly
+            if(dTree.getCurrentNode().getImageFilename().equals("default.png"))
+                return;
+
             ExceptionHandler.handleException(e, "RunProjectHandler.ActionPerformed");
         }
        

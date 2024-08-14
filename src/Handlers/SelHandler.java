@@ -81,6 +81,9 @@ public class SelHandler extends GooeyListener {
 			gFrame.getImage().setImage(EventController.getProjectDir() + "\\images\\" + decisionTree.getCurrentNode().getImageFilename());
 		}
 		catch(IOException e) {
+			//if default image is not set, fail quietly
+            if(decisionTree.getCurrentNode().getImageFilename().equals("default.png"))
+                return;
 			ExceptionHandler.handleException(e, "SelHandler.handleNode");
 		}
 	}
@@ -112,6 +115,9 @@ public class SelHandler extends GooeyListener {
 			gFrame.getImage().setImage(EventController.getProjectDir() + "\\images\\" + decisionTree.getCurrentNode().getImageFilename());
 		}
 		catch(IOException e) {
+			//if default image is not set, fail quietly
+            if(decisionTree.getCurrentNode().getImageFilename().equals("default.png"))
+                return;
 			ExceptionHandler.handleException(e, "SelHandler.handleNode");
 		}
 		
